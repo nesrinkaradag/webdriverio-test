@@ -113,7 +113,7 @@ describe('Ctcatest.biz Search Test', () => {
       
       expect(genericElement).toHaveTextContaining('SALE')
       genericElement.click();
-      //
+      
       search_box_element = $('//nav/ol/li[5]')
       expect(search_box_element).toBeDisplayed()
       expect(search_box_element).toHaveTextContaining('SALE')
@@ -155,17 +155,17 @@ describe('Ctcatest.biz Search Test', () => {
 
 
 
-     //wrongPassword();
+      wrongPassword();
 
-    // emptyCredentials();
+      emptyCredentials();
 
-   // rightPassword();
+      rightPassword();
 
-    // validateProduct();
+      validateProduct();
 
-     filterPrice();
+      filterPrice();
     
-     //validateSalesItem();
+      validateSalesItem();
 
 
 
