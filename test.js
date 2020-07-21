@@ -47,9 +47,9 @@ describe('Ctcatest.biz Search Test', () => {
       browser.url('http://www.ctqatest.biz/ecom')
       
        $('[href=\'http://www.ctqatest.biz/ecom/customer/account/\']').click();
-     // search_box_element.click();
+     
       $('[href=\'http://www.ctqatest.biz/ecom/customer/account/login/\']').click(); 
-     // search_box_element.click();
+    
      
       $('[name=\'login[username]\']').setValue("nesrinkaradag3@gmail.com")
     
@@ -73,10 +73,8 @@ describe('Ctcatest.biz Search Test', () => {
 //
 
      $('[name=\'q\']') .setValue("shirt")
-     // search_box_element.setValue("shirt")
 
       $('[class=\'button search-button\']').click();
-      //search_box_element.click();
     
      genericElement=$('[id=\'product-collection-image-403\']')
       expect(genericElement).toBeDisplayed();
@@ -87,16 +85,13 @@ describe('Ctcatest.biz Search Test', () => {
       genericElement.selectByVisibleText("Blue")
       
       $('[name=\'super_attribute[180]\']').click();
-      //search_box_element.click();
       genericElement = $('[id=\'attribute180\']')
       genericElement.click();
       genericElement.selectByVisibleText("XS");
        $('[name=\'qty\']')
-      // search_box_element.setValue("2")
       browser.releaseActions()
       
        $('[class=\'add-to-cart-buttons\']').click();
-     // search_box_element.click();
       genericElement = $('[title=\'Shopping Cart\']')
       expect(browser).toHaveTitle("Slim fit Dobby Oxford Shirt");
       
@@ -114,16 +109,16 @@ describe('Ctcatest.biz Search Test', () => {
       expect(genericElement).toHaveTextContaining('SALE')
       genericElement.click();
       
-      search_box_element = $('//nav/ol/li[5]')
-      expect(search_box_element).toBeDisplayed()
-      expect(search_box_element).toHaveTextContaining('SALE')
-      search_box_element.click();
+      genericElement = $('//nav/ol/li[5]')
+      expect(genericElement).toBeDisplayed()
+      expect(genericElement).toHaveTextContaining('SALE')
+      genericElement.click();
      
-      search_box_element=$('[href=\'http://www.ctqatest.biz/ecom/sale.html?price=100-200\']')
-      search_box_element.click();
-      search_box_element=$('.value=$100.00 - $199.99')
-      expect(search_box_element).toHaveTextContaining('$100.00 - $199.99')
-      search_box_element=$('#product-price-403=$140.00')
+      $('[href=\'http://www.ctqatest.biz/ecom/sale.html?price=100-200\']').click();
+      
+      genericElement=$('.value=$100.00 - $199.99')
+      expect(genericElement).toHaveTextContaining('$100.00 - $199.99')
+      genericElement=$('#product-price-403=$140.00')
     
 
       })
