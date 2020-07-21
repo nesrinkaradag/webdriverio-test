@@ -122,6 +122,7 @@ describe('Ctcatest.biz Search Test', () => {
     
 
       })
+    }
 
       function validateSalesItem(){
         it('should validate Sales', (done) => {
@@ -144,7 +145,7 @@ describe('Ctcatest.biz Search Test', () => {
               expect((Boolean(number>=100))&&(Boolean(number<200))).toBe(true);
           })
         })
-      }  
+       
 
   }  
 
