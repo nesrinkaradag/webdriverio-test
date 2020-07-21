@@ -90,7 +90,7 @@ describe('Ctcatest.biz Search Test', () => {
       setTimeout(function() {}, 30);
       search_box_element = $('[class=\'add-to-cart-buttons\']')
       search_box_element.click();
-      search_box_element = $('[title=\'Shopping Cart\']')
+      genericElement = $('[title=\'Shopping Cart\']')
       expect(browser).toHaveTitle("Shopping Cart");
     })
   }  
