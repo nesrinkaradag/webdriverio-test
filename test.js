@@ -70,7 +70,6 @@ describe('Ctcatest.biz Search Test', () => {
 
        $('[title=\'My Account\']')
       expect(browser).toHaveTitle("My Account")
-//
 
      $('[name=\'q\']') .setValue("shirt")
 
