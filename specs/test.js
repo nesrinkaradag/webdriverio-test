@@ -3,135 +3,167 @@ describe('Ctcatest.biz Search Test', () => {
     function wrongPassword(){
     it('should have the error message of Invalid Login or Password', (done) => {
       browser.url('http://www.ctqatest.biz/ecom')
-   
-      $('[href=\'http://www.ctqatest.biz/ecom/customer/account/\']').click(); 
+      setTimeout(function() {}, 10);
+       $('[href=\'http://www.ctqatest.biz/ecom/customer/account/\']').click();
+      
+       $('[href=\'http://www.ctqatest.biz/ecom/customer/account/login/\']').click();
+    
+       $('[name=\'login[username]\']').setValue("test@test.com")
+      
+       $('[name=\'login[password]\']').setValue("ThisIs@T3st")
      
-      search_box_element = $('[href=\'http://www.ctqatest.biz/ecom/customer/account/login/\']') 
-      search_box_element.click();
-      setTimeout(function() {}, 10);
-      search_box_element = $('[name=\'login[username]\']')
-      search_box_element.setValue("test@test.com")
-      search_box_element = $('[name=\'login[password]\']')
-      search_box_element.setValue("ThisIs@T3st")
-      search_box_element = $('[name=\'send\']')
-      search_box_element.click();
-      setTimeout(function() {}, 10);
-      search_box_element = $('[class=\'error-msg\']')
-      expect(search_box_element).toBeDisplayed()
-      expect(search_box_element).toHaveTextContaining('Invalid login or password')
+       $('[name=\'send\']').click();
+      
+     genericElement = $('[class=\'error-msg\']')
+     expect(genericElement).toBeDisplayed()
+  
     })
+
   }  
 
   function emptyCredentials(){
-    it('should have error message Required Fields', (done) => {
+    it('should have error message', (done) => {
+
       browser.url('http://www.ctqatest.biz/ecom')
-      setTimeout(function() {}, 10);
-      search_box_element = $('[href=\'http://www.ctqatest.biz/ecom/customer/account/\']') 
-      search_box_element.click();
-      search_box_element = $('[href=\'http://www.ctqatest.biz/ecom/customer/account/login/\']') 
-      search_box_element.click();
-      setTimeout(function() {}, 10);
-      search_box_element = $('[name=\'login[username]\']')
-      search_box_element.setValue("")
-      search_box_element = $('[name=\'login[password]\']')
-      search_box_element.setValue("")
-      search_box_element = $('[name=\'send\']')
-      search_box_element.click();
-      setTimeout(function() {}, 10);      
-      search_box_element = $('[class=\'required\']')
-      expect($(search_box_element)).toHaveTextContaining('* Required Fields');
+      
+       $('[href=\'http://www.ctqatest.biz/ecom/customer/account/\']').click();
+  
+      $('[href=\'http://www.ctqatest.biz/ecom/customer/account/login/\']').click();
+       
+      $('[name=\'login[username]\']').setValue("")
+      $('[name=\'login[password]\']').setValue("")
+     
+      $('[name=\'send\']').click();
+       
+      genericElement = $('[class=\'required\']')
+      expect(genericElement).toHaveClassContaining('required')
+      
+
     })
   }  
 
-  function rightPassword(){
+    function rightPassword(){
     it('should have My Account title', (done) => {
       browser.url('http://www.ctqatest.biz/ecom')
-      setTimeout(function() {}, 10);
-      search_box_element = $('[href=\'http://www.ctqatest.biz/ecom/customer/account/\']') 
-      search_box_element.click();
-      search_box_element = $('[href=\'http://www.ctqatest.biz/ecom/customer/account/login/\']') 
-      search_box_element.click();
-      setTimeout(function() {}, 10);
-      search_box_element = $('[name=\'login[username]\']')
-      search_box_element.setValue("gulhan.karali@gmail.com")
-      search_box_element = $('[name=\'login[password]\']')
-      search_box_element.setValue("Succulent4787!")
-      search_box_element = $('[name=\'send\']')
-      search_box_element.click();
-      setTimeout(function() {}, 10);
-      search_box_element = $('[title=\'My Account\']')
-      expect(browser).toHaveTitle("My Account");
+      
+       $('[href=\'http://www.ctqatest.biz/ecom/customer/account/\']').click();
+     
+      $('[href=\'http://www.ctqatest.biz/ecom/customer/account/login/\']').click(); 
+    
+     
+      $('[name=\'login[username]\']').setValue("nesrinkaradag3@gmail.com")
+    
+      $('[name=\'login[password]\']').setValue("1234567890nes")
+   
+      $('[name=\'send\']').click();
+    
+      $('[title=\'My Account\']')
+     expect(browser).toHaveTitle("My Account");
+
     })
   }  
+
+
 
   function validateProduct(){
-    it('should validate the product', (done) => {
-      browser.maximizeWindow()
-      search_box_element = $('[title=\'My Account\']')
-      expect(browser).toHaveTitle("My Account");
-      setTimeout(function() {}, 10);
-      search_box_element = $('[name=\'q\']') 
-      search_box_element.setValue("shirt")
-      search_box_element = $('[class=\'button search-button\']')
-      search_box_element.click();
-      search_box_element= $('[id=\'product-collection-image-403\']')
-      expect(search_box_element).toBeDisplayed()
-      search_box_element.click();
-      search_box_element = $('[id=\'attribute92\']')
-      search_box_element.click();
-      search_box_element.selectByVisibleText("Blue")
-      setTimeout(function() {}, 10);
-      search_box_element = $('[id=\'attribute180\']')
-      search_box_element.click();
-      search_box_element.selectByVisibleText("XS")
-      search_box_element = $('[name=\'qty\']')
-      search_box_element.setValue("2")
-      browser.releaseActions()
-      setTimeout(function() {}, 30);
-      search_box_element = $('[class=\'add-to-cart-buttons\']')
-      search_box_element.click();
-      genericElement = $('[title=\'Shopping Cart\']')
-      expect(browser).toHaveTitle("Shopping Cart");
-    })
-  }  
+    it('should have validate the product', (done) => {
 
-  function validateSalesItem(){
-    it('should validate Sales', (done) => {
-      genericElement = $('//nav/ol/li[5]')
-      expect(search_box_element).toBeDisplayed()
-      expect(search_box_element).toHaveTextContaining('SALE')
-      search_box_element.click();
-      setTimeout(function() {}, 10);
-      search_box_element = $('[href=\'http://www.ctqatest.biz/ecom/sale.html?price=100-200\']') 
-      search_box_element.click();
+       $('[title=\'My Account\']')
+      expect(browser).toHaveTitle("My Account")
 
-      let cellData = $$('//ul/li/div/div/p[@class=\'special-price\']//span/following-sibling::span[contains(@id,\'product-price\')]')
+     $('[name=\'q\']') .setValue("shirt")
+
+      $('[class=\'button search-button\']').click();
+    
+     genericElement=$('[id=\'product-collection-image-403\']')
+      expect(genericElement).toBeDisplayed();
+      genericElement.click();
       
-      let i=0;  
-      let prices=[];
+      genericElement = $('[name=\'super_attribute[92]\']')
+      genericElement.click();
+      genericElement.selectByVisibleText("Blue")
+      
+      $('[name=\'super_attribute[180]\']').click();
+      genericElement = $('[id=\'attribute180\']')
+      genericElement.click();
+      genericElement.selectByVisibleText("XS");
+       $('[name=\'qty\']')
+      browser.releaseActions()
+      
+       $('[class=\'add-to-cart-buttons\']').click();
+      genericElement = $('[title=\'Shopping Cart\']')
+      expect(browser).toHaveTitle("Slim fit Dobby Oxford Shirt");
+      
 
-      cellData.forEach(element=> {
-          prices[i]= element.getText();
-          i++;
-      });
+    })
+  }
 
-      prices.forEach(element=> {
-
-          let number= parseFloat(element.substring(1,element.length))
-          expect((Boolean(number>=100))&&(Boolean(number<200))).toBe(true);
+    function filterPrice(){
+    
+     it('should filter the price', (done) => {
+      browser.url('http://www.ctqatest.biz/ecom')
+     
+      genericElement = $('//nav/ol/li[5]')
+      
+      expect(genericElement).toHaveTextContaining('SALE')
+      genericElement.click();
+      
+      genericElement = $('//nav/ol/li[5]')
+      expect(genericElement).toBeDisplayed()
+      expect(genericElement).toHaveTextContaining('SALE')
+      genericElement.click();
+     
+      $('[href=\'http://www.ctqatest.biz/ecom/sale.html?price=100-200\']').click();
+      
+      genericElement=$('.value=$100.00 - $199.99')
+      expect(genericElement).toHaveTextContaining('$100.00 - $199.99')
+      genericElement=$('#product-price-403=$140.00')
+    
 
       })
-    })
-  }  
-  wrongPassword();
 
-  emptyCredentials();
+     
+    }
+    
 
-  rightPassword();
+      function validateSalesItem() {
+        it('should validate Sales', (done) => {
+          genericElement = $('//nav/ol/li[5]')
+          expect(genericElement).toBeDisplayed()
+          expect(genericElement).toHaveTextContaining('SALE')
+          genericElement.click();
+          setTimeout(function() {}, 10);
+          genericElement = $('[href=\'http://www.ctqatest.biz/ecom/sale.html?price=100-200\']') 
+          genericElement.click();
+          let cellData = $$('//ul/li/div/div/p[@class=\'special-price\']//span/following-sibling::span[contains(@id,\'product-price\')]')
+          let i=0;  
+          let prices=[];
+          cellData.forEach(element=> {
+              prices[i]= element.getText();
+              i++;
+          });
+          prices.forEach(element=> {
+              let number= parseFloat(element.substring(1,element.length))
+              expect((Boolean(number>=100))&&(Boolean(number<200))).toBe(true);
+            })
 
-  validateProduct();
+          })
+       
+       }  
 
-  validateSalesItem();
+
+
+      wrongPassword();
+
+      emptyCredentials();
+
+      rightPassword();
+
+      validateProduct();
+
+      filterPrice();
+    
+      validateSalesItem();
 
 
 
