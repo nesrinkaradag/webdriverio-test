@@ -97,7 +97,7 @@ describe('Ctcatest.biz Search Test', () => {
 
   function validateSalesItem(){
     it('should validate Sales', (done) => {
-      search_box_element = $('//nav/ol/li[5]')
+      genericElement = $('//nav/ol/li[5]')
       expect(search_box_element).toBeDisplayed()
       expect(search_box_element).toHaveTextContaining('SALE')
       search_box_element.click();
